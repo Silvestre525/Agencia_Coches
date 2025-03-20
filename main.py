@@ -35,24 +35,24 @@ def getAuto(auto_id:int, db:Session=Depends(get_db)):
 #Post
 @app.post('/autos/add',response_model=AutoCreate)
 def addAuto(auto:AutoCreate, db:Session=Depends(get_db)):
-    new_auto = Auto(marca=auto.marca,modelo=auto.modelo,anio=auto.ano,precio=auto.preco)
+    new_auto = Auto(marca=auto.marca,modelo=auto.modelo,anio=auto.anio,precio=auto.preco)
     db.add(new_auto)
     db.commit()
     db.refresh(new_auto)
     return new_auto
 
 #Put
-@app.put('autos/update/{auto_id}', response_model=AutoCreate)
+@app.put('/autos/update/{auto_id}', response_model=AutoCreate)
 def updateAuto(auto_id:int, auto:AutoCreate, db:Session=Depends(get_db)):
     auto_update = db.query(Auto).filter(Auto.id == auto_id).first()
 
     if auto_update is None:
-        return HTTPException(status_code=404,detail='Auto not found')
+        raise HTTPException(status_code=404,detail='Auto not found')
 
     auto_update.marca = auto.marca
     auto_update.modelo = auto.modelo
-    auto_update.anio = auto.ano 
-    auto_update.precio = auto.preco
+    auto_update.anio = auto.anio 
+    auto_update.precio = auto.precio
 
     db.commit()
     db.refresh(auto_update)
@@ -65,7 +65,8 @@ def deleteAuto(auto_id:int, db:Session=Depends(get_db)):
     auto_delete = db.query(Auto).filter(Auto.id == auto_id).first()
 
     if auto_delete is None:
-        return HTTPException(status_code=404,detail='Auto not found')
+        raise HTTPException(status_code=404,detail='Auto not found')
     db.delete(auto_delete)
     db.commit()
     return {'message':'Auto deleted'}               
+

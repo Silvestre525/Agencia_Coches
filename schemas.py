@@ -3,10 +3,10 @@ from pydantic import BaseModel
 
 #Schema para el Post de un coche
 class AutoCreate(BaseModel):
-    marca = str
-    modelo = str
-    ano = int
-    preco = float
+    marca : str
+    modelo : str
+    anio : int
+    preco : float
 
 
 
@@ -15,7 +15,7 @@ class AutoRead(BaseModel):
     id: int
     marca: str
     modelo: str
-    ano: int
+    anio: int
     preco: float
 
     class Config:
