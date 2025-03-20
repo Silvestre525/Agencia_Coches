@@ -11,7 +11,7 @@ class AutoCreate(BaseModel):
 
 
 #Schema para el Get de un coche
-class Auto(BaseModel):
+class AutoRead(BaseModel):
     id: int
     marca: str
     modelo: str
