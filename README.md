@@ -88,8 +88,18 @@ Una vez que los contenedores estén levantados, la API es accesible en el puerto
     # Consulta la lista de autos insertados automáticamente
     curl http://localhost:8000/api/autos/
     ```
-* **MySQLDB:** 3307	3306	localhost:3307	Acceso con cliente externo (MySQL Workbench).
 
+*   **Acceso a MySQL:** Puedes conectarte a la base de datos desde un cliente externo (como MySQL Workbench) usando `localhost:3307`.
+
+### Endpoints de la API
+
+| Método HTTP | Endpoint                  | Descripción                             | Esquema de Datos (Body)                    |
+| :---------- | :------------------------ | :-------------------------------------- | :------------------------------------------|
+| GET         | `/api/autos/`             | Obtiene todos los autos disponibles.    | Ninguno                                    |
+| GET         | `/api/autos/{auto_id}`    | Obtiene un auto por su ID.              | Ninguno                                    |
+| POST        | `/api/autos/`             | Crea un nuevo auto en la base de datos. | `AutoCreate` (marca, modelo, anio, precio) |
+| PUT         | `/api/autos/{auto_id}`    | Actualiza un auto existente por su ID.  | `AutoCreate` (marca, modelo, anio, precio) |
+| DELETE      | `/api/autos/{auto_id}`    | Elimina un auto por su ID.              | Ninguno                                    |
 
 ### 4. Explicación Técnica (Puntos Clave del TP)
 
@@ -134,4 +144,3 @@ A pesar del `healthcheck` de Docker Compose, la aplicación implementa una lógi
     ```bash
     docker volume rm [nombre_del_directorio_actual]_mysql_data
     ```
-
