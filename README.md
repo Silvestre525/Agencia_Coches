@@ -115,7 +115,7 @@ Una vez que los contenedores estén levantados, la API es accesible en el puerto
     * **Persistencia:** Utiliza un `volume` (`mysql_data`) para asegurar que los datos de MySQL persistan si el contenedor `db` se detiene o se reinicia.
     * **Resiliencia (`healthcheck`):** La dependencia `db: condition: service_healthy` combinada con el `healthcheck` de MySQL garantiza que la API no intentará iniciar hasta que la base de datos esté lista para aceptar conexiones.
 
-#### B. Solución de Resiliencia del Código (Punto Avanzado)
+#### B. Solución de Resiliencia del Código
 
 A pesar del `healthcheck` de Docker Compose, la aplicación implementa una lógica de reintento en el código Python para manejar la ventana de tiempo donde la base de datos puede estar lista pero lenta para responder a consultas de SQLAlchemy:
 
