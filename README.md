@@ -123,7 +123,7 @@ A pesar del `healthcheck` de Docker Compose, la aplicación implementa una lógi
 * **Mecanismo de Reintento:** Esta función intenta ejecutar la creación de tablas (`Base.metadata.create_all`) hasta **10 veces** con un retraso de 2 segundos, capturando los errores de `OperationalError` de MySQL.
 * **Seed Data:** Tras la conexión exitosa, la función `seed_data()` inserta datos de prueba si la tabla está vacía, haciendo que la API sea funcional inmediatamente.
 * **Ejecución:** Esta lógica se dispara mediante el evento de inicio de FastAPI: `@app.on_event("startup")` en `main.py`.
-
+```
 
 ## 4. Mantenimiento y Cierre
 
