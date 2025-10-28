@@ -19,7 +19,7 @@ La solución cumple con el objetivo de demostrar el ciclo de vida completo de un
 ├── models.py           # Definición de la tabla 'Auto' (SQLAlchemy ORM).
 ├── schemas.py          # Definición de la estructura de datos (Pydantic).
 ├── database.py         # Configuración de la conexión a MySQL (usa variables de entorno).
-├── db_init.py          # 💡 Lógica de inicialización, reintento y "Seed Data".
+├── db_init.py          # Lógica de inicialización, reintento y "Seed Data".
 ├── requirements.txt    # Lista de librerías Python necesarias.
 ├── .env                # Variables de entorno sensibles (credenciales de la DB).
 ├── Dockerfile          # Instrucciones para construir la imagen de la API.
@@ -65,7 +65,7 @@ Una vez que los contenedores estén levantados, la API es accesible en el puerto
 ### 4. Explicación Técnica (Puntos Clave del TP)
 
 ```markdown
-## 🛠️ 3. Puntos Técnicos y Ciclo de Vida del Contenedor
+## 3. Puntos Técnicos y Ciclo de Vida del Contenedor
 
 #### A. Gestión de Dependencias y Ciclo de Vida
 
@@ -105,3 +105,29 @@ A pesar del `healthcheck` de Docker Compose, la aplicación implementa una lógi
     ```bash
     docker volume rm [nombre_del_directorio_actual]_mysql_data
     ```
+
+## 5. Configuración de Variables de Entorno
+
+Para que los servicios se conecten correctamente, es necesario crear un archivo llamado .env en la raíz del proyecto. Este archivo inyecta las credenciales a los contenedores, pero Git ignora este archivo para proteger la seguridad.
+
+# .env
+
+##########################################
+## Configuración de la Base de Datos MySQL
+##########################################
+
+# Nombre de la base de datos a crear
+DB_NAME=AgenciaDb
+
+# Usuario de la aplicación (¡NO debe ser 'root'!)
+DB_USER=user123
+
+# Contraseña para el usuario de la aplicación (DB_USER)
+DB_PASSWORD=admin
+
+# Contraseña del usuario administrador de MySQL (root)
+DB_ROOT_PASSWORD=root123
+
+# Host: Este valor es ignorado por Docker Compose, pero se mantiene
+# para referencia si se ejecuta la API fuera de un contenedor.
+DB_HOST=localhost
