@@ -86,7 +86,7 @@ Una vez que los contenedores estén levantados, la API es accesible en el puerto
     Dado que la aplicación incluye **datos de prueba (seed data)**, puede consultar la lista de autos inmediatamente:
     ```bash
     # Consulta la lista de autos insertados automáticamente
-    curl http://localhost:8000/autos/
+    curl http://localhost:8000/api/autos/
     ```
 * **MySQLDB:** 3307	3306	localhost:3307	Acceso con cliente externo (MySQL Workbench).
 
