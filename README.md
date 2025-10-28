@@ -14,16 +14,19 @@ La solución cumple con el objetivo de demostrar el ciclo de vida completo de un
 
 
 ## Estructura del proyecto
+```text
 .
+├── .env                # Variables de entorno sensibles (credenciales de la DB).
+├── .gitignore          # Archivos y carpetas ignorados por Git.
+├── Dockerfile          # Instrucciones para construir la imagen de la API.
+├── docker-compose.yml  # Define y une los servicios 'api' y 'db' en una red.
 ├── main.py             # Código principal de la API y endpoints.
 ├── models.py           # Definición de la tabla 'Auto' (SQLAlchemy ORM).
 ├── schemas.py          # Definición de la estructura de datos (Pydantic).
-├── database.py         # Configuración de la conexión a MySQL (usa variables de entorno).
+├── database.py         # Configuración de la conexión a MySQL.
 ├── db_init.py          # Lógica de inicialización, reintento y "Seed Data".
-├── requirements.txt    # Lista de librerías Python necesarias.
-├── .env                # Variables de entorno sensibles (credenciales de la DB).
-├── Dockerfile          # Instrucciones para construir la imagen de la API.
-└── docker-compose.yml  # Define y une los servicios 'api' y 'db' en una red.
+└── requirements.txt    # Lista de librerías Python necesarias.
+```
 
 ## 1. Despliegue Rápido
 
