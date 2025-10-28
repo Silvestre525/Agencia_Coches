@@ -5,7 +5,7 @@ class Auto(Base):
     __tablename__ = 'autos'
 
     id = Column(Integer, primary_key=True, index=True)
-    marca = Column(String, index=True, nullable=False)
-    modelo = Column(String, index=True, nullable=False)
+    marca = Column(String(length=50), index=True, nullable=False)
+    modelo = Column(String(length=100), index=True, nullable=False)
     anio = Column(Integer, index=True, nullable=False)
     precio = Column(Float, index=True, nullable=False)
