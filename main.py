@@ -38,7 +38,7 @@ def getAuto(auto_id:int, db:Session=Depends(get_db)):
 #Post
 @router.post('/autos/',response_model=AutoRead, tags=["Autos"])
 def addAuto(auto:AutoCreate, db:Session=Depends(get_db)):
-    new_auto = Auto(marca=auto.marca,modelo=auto.modelo,anio=auto.anio,precio=auto.preco)
+    new_auto = Auto(marca=auto.marca,modelo=auto.modelo,anio=auto.anio,precio=auto.precio)
     db.add(new_auto)
     db.commit()
     db.refresh(new_auto)

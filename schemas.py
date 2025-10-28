@@ -6,7 +6,7 @@ class AutoCreate(BaseModel):
     marca : str
     modelo : str
     anio : int
-    preco : float
+    precio : float
 
 
 
@@ -16,7 +16,7 @@ class AutoRead(BaseModel):
     marca: str
     modelo: str
     anio: int
-    preco: float
+    precio: float
 
     class Config:
         from_atributes = True   #habilita la compatibilidad del ORM
