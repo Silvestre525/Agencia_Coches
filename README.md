@@ -44,7 +44,7 @@ Para ejecutar esta aplicación, solo necesita tener **Git** y **Docker Desktop**
     ## . Configuración de Variables de Entorno
 
     Para que los servicios se conecten correctamente, es necesario crear un archivo llamado .env en la raíz del proyecto. Este archivo inyecta las credenciales a los contenedores, pero Git ignora este archivo para proteger la seguridad.
-
+    ```bash
     # .env
 
     ##########################################
@@ -66,7 +66,7 @@ Para ejecutar esta aplicación, solo necesita tener **Git** y **Docker Desktop**
     # Host: Este valor es ignorado por Docker Compose, pero se mantiene
     # para referencia si se ejecuta la API fuera de un contenedor.
     DB_HOST=localhost
-
+    ```
 3.  **Construir y Ejecutar el Stack:**
     El comando `docker-compose up` construye la imagen de la API y levanta la red con ambos servicios.
     ```bash
