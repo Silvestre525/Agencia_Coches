@@ -41,6 +41,32 @@ Para ejecutar esta aplicación, solo necesita tener **Git** y **Docker Desktop**
 2.  **Configurar Variables de Entorno:**
     Asegúrese de que el archivo `.env` exista en la raíz del proyecto. Estas variables son cruciales para la conexión entre los contenedores.
 
+    ## . Configuración de Variables de Entorno
+
+    Para que los servicios se conecten correctamente, es necesario crear un archivo llamado .env en la raíz del proyecto. Este archivo inyecta las credenciales a los contenedores, pero Git ignora este archivo para proteger la seguridad.
+
+    # .env
+
+    ##########################################
+    ## Configuración de la Base de Datos MySQL
+    ##########################################
+
+    # Nombre de la base de datos a crear
+    DB_NAME=AgenciaDb
+
+    # Usuario de la aplicación (¡NO debe ser 'root'!)
+    DB_USER=user123
+
+    # Contraseña para el usuario de la aplicación (DB_USER)
+    DB_PASSWORD=admin
+
+    # Contraseña del usuario administrador de MySQL (root)
+    DB_ROOT_PASSWORD=root123
+
+    # Host: Este valor es ignorado por Docker Compose, pero se mantiene
+    # para referencia si se ejecuta la API fuera de un contenedor.
+    DB_HOST=localhost
+
 3.  **Construir y Ejecutar el Stack:**
     El comando `docker-compose up` construye la imagen de la API y levanta la red con ambos servicios.
     ```bash
@@ -109,28 +135,3 @@ A pesar del `healthcheck` de Docker Compose, la aplicación implementa una lógi
     docker volume rm [nombre_del_directorio_actual]_mysql_data
     ```
 
-## 5. Configuración de Variables de Entorno
-
-Para que los servicios se conecten correctamente, es necesario crear un archivo llamado .env en la raíz del proyecto. Este archivo inyecta las credenciales a los contenedores, pero Git ignora este archivo para proteger la seguridad.
-
-# .env
-
-##########################################
-## Configuración de la Base de Datos MySQL
-##########################################
-
-# Nombre de la base de datos a crear
-DB_NAME=AgenciaDb
-
-# Usuario de la aplicación (¡NO debe ser 'root'!)
-DB_USER=user123
-
-# Contraseña para el usuario de la aplicación (DB_USER)
-DB_PASSWORD=admin
-
-# Contraseña del usuario administrador de MySQL (root)
-DB_ROOT_PASSWORD=root123
-
-# Host: Este valor es ignorado por Docker Compose, pero se mantiene
-# para referencia si se ejecuta la API fuera de un contenedor.
-DB_HOST=localhost
