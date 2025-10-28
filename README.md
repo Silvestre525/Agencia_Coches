@@ -1,14 +1,31 @@
-# 🐳 Proyecto Final: API REST de Autos Dockerizada (FastAPI + MySQL)
+# Proyecto Final: API REST de Autos Dockerizada (FastAPI + MySQL)
 
-Este proyecto cumple con la consigna del TP, demostrando la contenerización completa de un stack backend utilizando Docker Compose, FastAPI (Python) como servicio API y MySQL como servicio de base de datos persistente.
+Proyecto Integrador: API REST de Gestión de Autos
+
+Este proyecto consiste en una API REST sencilla que gestiona una lista de autos (CRUD: Crear, Leer, Actualizar, Borrar), completamente contenida y desplegada mediante Docker Compose.
+
+La solución cumple con el objetivo de demostrar el ciclo de vida completo de un contenedor y la orquestación de servicios en un entorno reproducible
 
 **Tecnologías:**
 * **Backend:** Python 3.11, FastAPI, SQLAlchemy, PyMySQL.
 * **Contenerización:** Docker, Docker Compose (v3.8).
 * **Base de Datos:** MySQL 8.0.
+* **ORM** SQLAlchemy
 
 
-## 🚀 1. Despliegue Rápido (Quick Start)
+## Estructura del proyecto
+.
+├── main.py             # Código principal de la API y endpoints.
+├── models.py           # Definición de la tabla 'Auto' (SQLAlchemy ORM).
+├── schemas.py          # Definición de la estructura de datos (Pydantic).
+├── database.py         # Configuración de la conexión a MySQL (usa variables de entorno).
+├── db_init.py          # 💡 Lógica de inicialización, reintento y "Seed Data".
+├── requirements.txt    # Lista de librerías Python necesarias.
+├── .env                # Variables de entorno sensibles (credenciales de la DB).
+├── Dockerfile          # Instrucciones para construir la imagen de la API.
+└── docker-compose.yml  # Define y une los servicios 'api' y 'db' en una red.
+
+## 1. Despliegue Rápido
 
 Para ejecutar esta aplicación, solo necesita tener **Git** y **Docker Desktop** (o Docker Engine) instalados.
 
@@ -19,7 +36,7 @@ Para ejecutar esta aplicación, solo necesita tener **Git** y **Docker Desktop**
     ```
 
 2.  **Configurar Variables de Entorno:**
-    Asegúrese de que el archivo `.env` exista en la raíz del proyecto. Estas variables son cruciales para la conexión entre los contenedores. (Los valores predeterminados son suficientes para la prueba).
+    Asegúrese de que el archivo `.env` exista en la raíz del proyecto. Estas variables son cruciales para la conexión entre los contenedores.
 
 3.  **Construir y Ejecutar el Stack:**
     El comando `docker-compose up` construye la imagen de la API y levanta la red con ambos servicios.
@@ -29,7 +46,7 @@ Para ejecutar esta aplicación, solo necesita tener **Git** y **Docker Desktop**
     ```
 
 
-## 🌐 2. Uso y Acceso
+## 2. Uso y Acceso
 
 Una vez que los contenedores estén levantados, la API es accesible en el puerto **8000** de su máquina local.
 
@@ -42,6 +59,8 @@ Una vez que los contenedores estén levantados, la API es accesible en el puerto
     # Consulta la lista de autos insertados automáticamente
     curl http://localhost:8000/autos/
     ```
+* **MySQLDB:** 3307	3306	localhost:3307	Acceso con cliente externo (MySQL Workbench).
+
 
 ### 4. Explicación Técnica (Puntos Clave del TP)
 
@@ -67,7 +86,7 @@ A pesar del `healthcheck` de Docker Compose, la aplicación implementa una lógi
 * **Ejecución:** Esta lógica se dispara mediante el evento de inicio de FastAPI: `@app.on_event("startup")` en `main.py`.
 
 
-## 🛑 4. Mantenimiento y Cierre
+## 4. Mantenimiento y Cierre
 
 * **Verificar Contenedores:**
     ```bash
