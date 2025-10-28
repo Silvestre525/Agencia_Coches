@@ -3,34 +3,15 @@ from sqlalchemy.orm import Session
 from models import Auto
 from schemas import AutoCreate,AutoRead
 from database import SessionLocal, engine, Base
-import time
+from db_init import initialize_db_and_seed
 
 app = FastAPI()
 
 @app.on_event("startup")
 def startup_event():
-    """Espera un momento (por si acaso) y crea las tablas."""
-    print("Intentando conectar a la DB y crear tablas...")
-    
-    # Simple bucle de reintento en Python (más legible que shell)
-    max_retries = 10
-    retry_delay = 2  # segundos
-
-    for i in range(max_retries):
-        try:
-            Base.metadata.create_all(bind=engine)
-            print("Conexión exitosa y tablas verificadas/creadas.")
-            return # Salir del bucle si es exitoso
-        except Exception as e:
-            print(f"Error de conexión a la DB (Intento {i+1}/{max_retries}): {e}")
-            if i < max_retries - 1:
-                time.sleep(retry_delay)
-            else:
-                # Si falla el último intento, levantamos la excepción fatal
-                raise e
+     initialize_db_and_seed()
 
 
-# Función para obtener la sesión de la base de datos
 def get_db():
     db = SessionLocal()
     try:
