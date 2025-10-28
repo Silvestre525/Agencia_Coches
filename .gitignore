@@ -1,0 +1,39 @@
+# Archivos de entorno
+# ¡MUY IMPORTANTE! Contiene secretos y configuraciones locales.
+.env
+.env.*
+
+# Dependencias y entornos virtuales de Python
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de configuración de IDEs y editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de logs
+*.log
+logs/
+
+# Archivos de testing y cobertura
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Datos de Docker
+mysql_data/
