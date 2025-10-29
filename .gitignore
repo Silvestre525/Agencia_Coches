@@ -1,7 +1,6 @@
 # Archivos de entorno
 # ¡MUY IMPORTANTE! Contiene secretos y configuraciones locales.
-.env
-.env.*
+
 
 # Dependencias y entornos virtuales de Python
 venv/
