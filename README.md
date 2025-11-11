@@ -1,6 +1,6 @@
 #  API REST de Autos Dockerizada (FastAPI + MySQL)
 
-Proyecto Integrador: API REST de Gestión de Autos
+API REST de Gestión de Autos
 
 Este proyecto consiste en una API REST sencilla que gestiona una lista de autos (CRUD: Crear, Leer, Actualizar, Borrar), completamente contenida y desplegada mediante Docker Compose.
 
