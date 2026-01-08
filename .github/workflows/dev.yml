@@ -1,9 +1,9 @@
-name: Despliegue a Desarrollo (Dev)
+name: Despliegue a main
 
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   integration-test-and-deploy:
