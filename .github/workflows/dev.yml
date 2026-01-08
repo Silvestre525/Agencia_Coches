@@ -15,6 +15,14 @@ jobs:
       - name: Descargar código fuente
         uses: actions/checkout@v4
 
+      - name: Crear archivo .env con Secretos 🔐
+        run: |
+          echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
+          echo "DB_USER=${{ secrets.DB_USER }}" >> .env
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+          echo "DB_ROOT_PASSWORD=${{ secrets.DB_ROOT_PASSWORD }}" >> .env
+          echo "DB_HOST=db" >> .env
+
       - name: Levantar entorno y correr pruebas de integración 
         run: docker compose up --build --exit-code-from tester
 
